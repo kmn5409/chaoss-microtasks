@@ -19,14 +19,12 @@ def isrecent(issues,d1,dicti):
 repo_url = 'grimoirelab-perceval'
 # Directory for letting Perceval clone the git repo
 repo_dir = 'grimoirelab-perceval'
-token = -XXX
+token = 'e3f0dd3ccf0174ba4fe351c7c12a275b666f2c34'
 own = 'chaoss'
 # ElasticSearch instance (url)
-es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
 #repo = 'grimoirelab-perceval'
 
 # Create the 'commits' index in ElasticSearch
-es.indices.create('issues')
 # Create a Git object, pointing to repo_url, using repo_dir for cloning
 repo = GitHub(owner=own,repository=repo_url,api_token=token)
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
@@ -58,8 +56,8 @@ print(mon)
 for issues in repo.fetch():
     # Create the object (dictionary) to upload to ElasticSearch
 	# Create the object (dictionary) to upload to ElasticSearch
-	if(i==90):
-		break
+	#if(i==90):
+	#	break
 	if 'pull_request' in issues['data']:
 		continue
 	else:
@@ -100,10 +98,12 @@ print(mon)
 fig = plt.figure()
 plt.plot(mon,op,'r-',label='Open')
 plt.plot(mon,cl,'b-',label='Closed')
-fig.suptitle('Time-to-close', fontsize=20)
+fig.suptitle('Time-to-close',y=1.0, fontsize=20)
 plt.xlabel('Month', fontsize=18)
 plt.ylabel('Amount', fontsize=16)
 fig.savefig('test.png')
+plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+           ncol=2, mode="expand", borderaxespad=0.)
 plt.show()
 
 
