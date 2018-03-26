@@ -19,7 +19,7 @@ def isrecent(issues,d1,dicti):
 repo_url = 'grimoirelab-perceval'
 # Directory for letting Perceval clone the git repo
 repo_dir = 'grimoirelab-perceval'
-token = 'e3f0dd3ccf0174ba4fe351c7c12a275b666f2c34'
+token = -XXX
 own = 'chaoss'
 # ElasticSearch instance (url)
 es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
